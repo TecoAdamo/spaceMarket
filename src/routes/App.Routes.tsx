@@ -14,9 +14,9 @@ const DrawerNavigation = () => {
     <Drawer.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: "#f1f5f92a", // Defina a cor de fundo desejada aqui
+          backgroundColor: "#EFF2F4",
         },
-        headerTintColor: "#364D9D", // Defina a cor do texto do cabeçalho
+        headerTintColor: "#364D9D",
         headerTitleStyle: {
           fontWeight: "bold",
         },
