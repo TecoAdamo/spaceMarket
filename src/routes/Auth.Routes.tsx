@@ -4,19 +4,24 @@ import {
 } from "@react-navigation/native-stack";
 
 import React from "react";
-import { TouchableOpacity } from "react-native";
-import { DrawerActions, useNavigation } from "@react-navigation/native";
 
-import Ionicons from "@expo/vector-icons/Ionicons";
+import { useNavigation } from "@react-navigation/native";
 
 import Home from "../screens/Home";
 import Cart from "../screens/Cart";
 import Products from "../screens/Products";
 import Profile from "../screens/Profile";
+import { ImageProps } from "react-native";
+
+export type ProductsProps = {
+  title: string;
+  price: number;
+  thumbnail: ImageProps;
+};
 
 type AuthRoutes = {
   home: undefined;
-  products: undefined;
+  products: { data: ProductsProps };
   cart: undefined;
   profile: undefined;
 };
