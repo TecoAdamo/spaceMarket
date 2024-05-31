@@ -24,7 +24,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: "gray",
     backgroundColor: "#DEE2E7",
-    marginTop: 12,
+    marginTop: 26,
+    marginBottom: 10,
   },
   boxInput: {
     padding: 4,

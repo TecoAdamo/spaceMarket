@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
   btn: {
     marginRight: 8,
     marginTop: 18,
+    marginBottom: 36,
     padding: 6,
     marginLeft: 8,
     height: 38,
