@@ -14,6 +14,8 @@ import Profile from "../screens/Profile";
 import { ImageProps } from "react-native";
 
 export type ProductsProps = {
+  id: string;
+  offer?: string;
   title: string;
   price: number;
   thumbnail: ImageProps;
