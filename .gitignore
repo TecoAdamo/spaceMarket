@@ -33,3 +33,6 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+src/data/index.ts
+src/data/Photos.ts
+src/utils/index.tsx
