@@ -1,54 +1,43 @@
 import {
   ScrollView,
-  SectionList,
   StyleSheet,
   Text,
   TouchableOpacity,
-  TouchableOpacityProps,
   View,
 } from "react-native";
-import { MENU } from "../utils";
 import CardPhoto from "./CardPhoto";
-import { ProductsProps } from "../routes/Auth.Routes";
+import { ProductsProps } from "../utils/DealsOffersDB";
+import PriceOffers from "./PriceOffers";
 
-type Props = TouchableOpacityProps & {
-  data?: ProductsProps;
+type Props = {
+  title: string;
+  subTitle?: string;
+  offer?: string;
+  products: ProductsProps[];
 };
 
-export default function DealsOffers({ data }: Props) {
+export default function DealsOffers({ title, subTitle, products }: Props) {
   return (
     <View style={styles.container}>
       <View style={styles.textBox}>
-        <Text style={styles.textTitle}>Promoções e ofertas</Text>
-        <Text style={styles.subTitle}>Equipamentos Eletrônicos</Text>
+        <Text style={styles.textTitle}>{title}</Text>
+        {subTitle && <Text style={styles.subTitle}>{subTitle}</Text>}
       </View>
 
-      <SectionList
-        horizontal
-        sections={MENU}
-        keyExtractor={(item) => item.id}
-        stickySectionHeadersEnabled={false}
-        renderItem={({ item }) => <CardPhoto data={item} />}
-        renderSectionHeader={({ section: { title } }) => (
-          <Text style={styles.textTitle}>{data?.title}</Text>
-        )}
-        contentContainerStyle={{ paddingBottom: 20 }}
-      />
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+        {products.map((item) => (
+          <CardPhoto key={item.id} data={item} offer={item.offer} />
+        ))}
+      </ScrollView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#FFFFFF",
     width: "100%",
-    height: "50%",
-  },
-  containerText: {
-    fontSize: 20,
-    color: "white",
-    fontWeight: "700",
-    marginLeft: 12,
+    backgroundColor: "#FFFFFF",
+    marginTop: 6,
   },
   textBox: {
     marginLeft: "8%",
@@ -57,19 +46,9 @@ const styles = StyleSheet.create({
   textTitle: {
     fontSize: 20,
     fontWeight: "700",
-    height: "30%",
+    marginTop: 10,
   },
   subTitle: {
     color: "gray",
-  },
-  cardPhoto: {
-    backgroundColor: "#979797",
-  },
-
-  priceText: {
-    color: "white",
-    fontSize: 16,
-    textAlign: "center",
-    marginTop: 20,
   },
 });

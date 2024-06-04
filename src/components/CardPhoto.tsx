@@ -1,6 +1,5 @@
 import {
   Image,
-  ImageProps,
   ScrollView,
   StyleSheet,
   Text,
@@ -11,12 +10,15 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { AuthNavigatorRoutesProps, ProductsProps } from "../routes/Auth.Routes";
 import React from "react";
+import PriceOffers from "./PriceOffers";
 
 type Props = TouchableOpacityProps & {
   data?: ProductsProps;
+  title?: ProductsProps;
+  offer?: string;
 };
 
-export default function CardPhoto({ data, ...rest }: Props) {
+export default function CardPhoto({ data, title, offer, ...rest }: Props) {
   const navigation = useNavigation<AuthNavigatorRoutesProps>();
 
   return (
@@ -26,7 +28,10 @@ export default function CardPhoto({ data, ...rest }: Props) {
     >
       <TouchableOpacity style={styles.buttonBtn} {...rest}>
         {data && data.thumbnail && (
-          <Image source={data.thumbnail} style={styles.imgBlazer} />
+          <View style={styles.boxProducts}>
+            <Image source={data.thumbnail} style={styles.img} />
+            <Text style={styles.boxProductsText}>{data.title}</Text>
+          </View>
         )}
       </TouchableOpacity>
     </ScrollView>
@@ -37,12 +42,23 @@ const styles = StyleSheet.create({
   buttonBtn: {
     borderRadius: 15,
   },
-  imgBlazer: {
+  boxProducts: {
+    alignItems: "center",
+  },
+  boxProductsText: {
+    marginTop: 8,
+  },
+  img: {
+    width: 120,
+    height: 120,
+    marginRight: 20,
+    marginLeft: 12,
+    marginTop: 28,
     borderRadius: 10,
-    marginBottom: 6,
+    resizeMode: "cover",
   },
 
   textTitle: {
-    marginLeft: 10, // Adicione esta linha para dar espaço entre a imagem e o texto
+    marginLeft: 10,
   },
 });
