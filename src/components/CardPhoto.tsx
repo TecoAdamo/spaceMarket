@@ -15,10 +15,9 @@ import PriceOffers from "./PriceOffers";
 type Props = TouchableOpacityProps & {
   data?: ProductsProps;
   title?: ProductsProps;
-  offer?: string;
 };
 
-export default function CardPhoto({ data, title, offer, ...rest }: Props) {
+export default function CardPhoto({ data, title, ...rest }: Props) {
   const navigation = useNavigation<AuthNavigatorRoutesProps>();
 
   return (
