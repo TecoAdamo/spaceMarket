@@ -1,11 +1,8 @@
 import {
-  createNativeStackNavigator,
   NativeStackNavigationProp,
+  createNativeStackNavigator,
 } from "@react-navigation/native-stack";
-
 import React from "react";
-
-import { useNavigation } from "@react-navigation/native";
 
 import Home from "../screens/Home";
 import Cart from "../screens/Cart";
@@ -33,7 +30,6 @@ export type AuthNavigatorRoutesProps = NativeStackNavigationProp<AuthRoutes>;
 const { Navigator, Screen } = createNativeStackNavigator<AuthRoutes>();
 
 export function AuthRoutes() {
-  const navigation = useNavigation();
   return (
     <Navigator initialRouteName="home">
       <Screen name="home" component={Home} />
