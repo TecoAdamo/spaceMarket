@@ -19,9 +19,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#d9f99d",
     padding: 10,
     borderRadius: 20,
-    width: "70%",
     marginTop: 8,
     marginBottom: 4,
+    width: "80%",
   },
   textPrice: {
     textAlign: "center",

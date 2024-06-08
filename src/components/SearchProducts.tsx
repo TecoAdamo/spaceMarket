@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   boxInput: {
-    padding: 4,
+    padding: 10,
     width: "100%",
     marginLeft: 60,
   },

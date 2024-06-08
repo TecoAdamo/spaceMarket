@@ -7,7 +7,7 @@ type Props = {
 export default function PriceOffers({ offer }: Props) {
   return (
     <View style={styles.container}>
-      <Text>{offer}</Text>
+      <Text style={styles.textPrice}>{offer}</Text>
     </View>
   );
 }
@@ -17,10 +17,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFE3E3",
     padding: 10,
     borderRadius: 20,
-    width: "50%",
     marginTop: 8,
-    marginBottom: 4,
-    alignItems: "center",
+    width: "80%",
+    marginBottom: 18,
+    marginLeft: 10,
   },
   textPrice: {
     textAlign: "center",
