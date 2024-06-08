@@ -68,7 +68,11 @@ export default function Home() {
           subTitle="Equipamentos Eletrônicos"
           products={dealsOffersProducts}
         />
-        <HomeProducts title="Casa e exterior" products={homeProductsItems} />
+        <HomeProducts
+          title="Casa e exterior"
+          products={homeProductsItems}
+          price={0}
+        />
         <Eletronics title="Eletrônicos" sections={OtherProductsMenu} />
       </View>
     </ScrollView>
