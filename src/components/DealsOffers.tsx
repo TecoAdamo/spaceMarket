@@ -3,11 +3,14 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
+  TouchableOpacityProps,
   View,
 } from "react-native";
 import CardPhoto from "./CardPhoto";
 import { ProductsProps } from "../utils/DealsOffersDB";
 import PriceOffers from "./PriceOffers";
+import { useNavigation } from "@react-navigation/native";
+import { AuthNavigatorRoutesProps } from "../routes/Auth.Routes";
 
 type Props = {
   title: string;
@@ -16,7 +19,19 @@ type Props = {
   products: ProductsProps[];
 };
 
-export default function DealsOffers({ title, subTitle, products }: Props) {
+export default function DealsOffers({
+  title,
+  subTitle,
+  products,
+  ...rest
+}: Props) {
+  const navigation = useNavigation<AuthNavigatorRoutesProps>();
+
+  const handleProductScreen = (product: ProductsProps) => {
+    console.log("Navigating to product:", product);
+    navigation.navigate("products", { data: product });
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.textBox}>
@@ -26,7 +41,15 @@ export default function DealsOffers({ title, subTitle, products }: Props) {
 
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {products.map((item) => (
-          <CardPhoto key={item.id} data={item} offer={item.offer} />
+          <View key={item.id} style={styles.boxProductOffers}>
+            <TouchableOpacity
+              onPress={() => handleProductScreen(item)}
+              {...rest}
+            >
+              <CardPhoto key={item.id} data={item} />
+            </TouchableOpacity>
+            <PriceOffers offer={item.offer} />
+          </View>
         ))}
       </ScrollView>
     </View>
@@ -50,5 +73,8 @@ const styles = StyleSheet.create({
   },
   subTitle: {
     color: "gray",
+  },
+  boxProductOffers: {
+    flexDirection: "column",
   },
 });
