@@ -10,6 +10,7 @@ import {
 
 import CardPhoto from "./CardPhoto";
 import { ProductsProps } from "../routes/Auth.Routes";
+import PriceProducts from "./PriceProducts";
 
 type Props = TouchableOpacityProps & {
   title: string;
@@ -30,7 +31,12 @@ export default function Eletronics({ title, subTitle, sections }: Props) {
         sections={sections}
         keyExtractor={(item) => item.id}
         stickySectionHeadersEnabled={false}
-        renderItem={({ item }) => <CardPhoto data={item} offer={item.offer} />}
+        renderItem={({ item }) => (
+          <View style={styles.boxEletroProducts}>
+            <CardPhoto data={item} />
+            <PriceProducts price={item.price} />
+          </View>
+        )}
         contentContainerStyle={{ paddingBottom: 20 }}
         showsHorizontalScrollIndicator={false}
       />
@@ -40,10 +46,10 @@ export default function Eletronics({ title, subTitle, sections }: Props) {
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
     height: 312,
-    backgroundColor: "#FFFFFF",
     marginTop: 6,
+    width: "100%",
+    backgroundColor: "#FFFFFF",
   },
   containerText: {
     fontSize: 20,
@@ -65,5 +71,9 @@ const styles = StyleSheet.create({
   },
   cardPhoto: {
     backgroundColor: "#979797",
+  },
+  boxEletroProducts: {
+    flexDirection: "column",
+    alignItems: "center",
   },
 });
