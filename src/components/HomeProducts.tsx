@@ -41,7 +41,7 @@ export default function HomeProducts({
         stickySectionHeadersEnabled={false}
         renderItem={({ item }) => (
           <View style={styles.productContainer}>
-            <CardPhoto data={item} offer={offer} />
+            <CardPhoto data={item} />
             <PriceProducts price={item.price} />
           </View>
         )}
